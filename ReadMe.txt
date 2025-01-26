@@ -35,7 +35,13 @@ Machine Task:
 Tasks : Done
 Components : Done
 Data fectching and manupulation : Done
+charts & graphs implemented : Done
 state managing (ngrx): done
 Technical requirements : Done
 Bonous features all added
+````````````````````````````````````
+Additionally 
+implemented custom charts from ngrx
+implemented custom skeleton loading for each components
+implemented theme toggles
 
