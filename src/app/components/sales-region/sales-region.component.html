@@ -1,0 +1,8 @@
+<div class="rounded-lg p-6 border" [ngClass]="{'bg-gray-100': !isDark}"
+  [style.background-color]="isDark ? 'var(--card-bg)' : '#FFFFFF'"
+  [style.border]="isDark ? '1px solid var(--border-color)' : '1px solid #D1D5DB'">
+  <h3 [style.color]="'var(--text-primary)'" class="text-lg font-bold mb-4">Sales by Region</h3>
+  <div style="height: 295px;">
+    <canvas #regionChart></canvas>
+  </div>
+</div>

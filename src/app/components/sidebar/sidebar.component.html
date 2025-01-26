@@ -1,0 +1,141 @@
+<aside [ngClass]="{'w-[180px]': !isCollapsed, 'w-[70px]': isCollapsed}"
+    class="fixed top-0 left-0 h-screen transition-all duration-300 z-10" [style.background-color]="'var(--sidebar-bg)'">
+
+    <div class="flex items-center px-6 h-[70px] justify-between">
+        <h1 class="text-xl font-bold transition-colors duration-300"
+            [ngClass]="{'text-white': isDark, 'text-black': !isDark, 'hidden': isCollapsed}">
+            sellerapp
+        </h1>
+
+        <button (click)="toggleSidebar()" class="text-white hover:bg-gray-200/20 rounded">
+            <span class="material-symbols-outlined"
+                [ngClass]="{'text-[#A3AED0] hover:text-white': isDark, 'text-gray-600 hover:text-gray-800': !isDark}">
+                {{ isCollapsed ? 'menu_open' : 'chevron_left' }}
+            </span>
+        </button>
+    </div>
+    <button (click)="toggleSidebar()"
+        class="absolute -right-3 top-[24px] h-6 w-6 rounded-full flex items-center justify-center transition-colors opacity-0 group-hover:opacity-100 hover:text-white"
+        [ngClass]="{
+        'bg-[#1A1F37] text-[#A3AED0] border border-[#222B45]': isDark,
+        'bg-gray-200 text-gray-200 border-b border-black/[0.16]': !isDark
+    }">
+        <span class="material-symbols-outlined text-sm">
+            {{ isCollapsed ? 'chevron_right' : 'chevron_left' }}
+        </span>
+    </button>
+    <nav class="flex-1 pt-2">
+        <ul class="space-y-0">
+            <li *ngFor="let item of mainNavItems">
+                <a [href]="item.path" class="flex items-center px-6 py-[10px] transition-colors duration-300" [ngClass]="{'bg-[#222B45] text-white': item.active && isDark, 
+                      'bg-gray-300 text-black': item.active && !isDark, 
+                      'text-[#A3AED0] hover:text-white': !item.active && isDark, 
+                      'text-gray-600 hover:text-gray-800': !item.active && !isDark}">
+                    <span class="icon-container" [class.mr-3]="!isCollapsed">
+                        <ng-container *ngIf="item.icon">
+                            <i [class]="item.icon"></i>
+                        </ng-container>
+                        <ng-container *ngIf="item.svgIcon">
+                            <span [innerHTML]="item.svgIcon"></span>
+                        </ng-container>
+                    </span>
+                    <span class="text-sm font-medium whitespace-nowrap" [ngClass]="{'hidden': isCollapsed}">
+                        {{ item.label }}
+                    </span>
+                </a>
+            </li>
+        </ul>
+
+        <div class="my-1 border-b border-black/[0.16]"></div>
+
+        <ul class="space-y-0">
+            <li *ngFor="let item of secondaryNavItems">
+                <a [href]="item.path" class="flex items-center px-6 py-[10px] transition-colors duration-300" [ngClass]="{'bg-[#222B45] text-white': item.active && isDark, 
+                      'bg-gray-300 text-black': item.active && !isDark, 
+                      'text-[#A3AED0] hover:text-white': !item.active && isDark, 
+                      'text-gray-600 hover:text-gray-800': !item.active && !isDark}">
+                    <span class="icon-container" [class.mr-3]="!isCollapsed">
+                        <ng-container *ngIf="item.icon">
+                            <i [class]="item.icon"></i>
+                        </ng-container>
+                        <ng-container *ngIf="item.svgIcon">
+                            <span [innerHTML]="item.svgIcon"></span>
+                        </ng-container>
+                    </span>
+                    <span class="text-sm font-medium whitespace-nowrap" [ngClass]="{'hidden': isCollapsed}">
+                        {{ item.label }}
+                    </span>
+                </a>
+            </li>
+        </ul>
+
+        <div class="my-1 border-b border-black/[0.16]"></div>
+
+        <ul class="space-y-0">
+            <li *ngFor="let item of thirdNavItems">
+                <a [href]="item.path" class="flex items-center px-6 py-[10px] transition-colors duration-300" [ngClass]="{'bg-[#222B45] text-white': item.active && isDark, 
+                      'bg-gray-300 text-black': item.active && !isDark, 
+                      'text-[#A3AED0] hover:text-white': !item.active && isDark, 
+                      'text-gray-600 hover:text-gray-800': !item.active && !isDark}">
+                    <span class="icon-container" [class.mr-3]="!isCollapsed">
+                        <ng-container *ngIf="item.icon">
+                            <i [class]="item.icon"></i>
+                        </ng-container>
+                        <ng-container *ngIf="item.svgIcon">
+                            <span [innerHTML]="item.svgIcon"></span>
+                        </ng-container>
+                    </span>
+                    <span class="text-sm font-medium whitespace-nowrap" [ngClass]="{'hidden': isCollapsed}">
+                        {{ item.label }}
+                    </span>
+                </a>
+            </li>
+        </ul>
+
+        <div class="my-1 border-b border-black/[0.16]"></div>
+
+        <a href="#" class="flex items-center px-6 py-[10px] transition-colors duration-300" [ngClass]="{'bg-[#222B45] text-white': isLogut && isDark, 
+        'bg-gray-300 text-black': isLogut && !isDark, 
+        'text-[#A3AED0] hover:text-white': !isLogut && isDark, 
+        'text-gray-600 hover:text-gray-800': !isLogut && !isDark}">
+            <span class="icon-container" [class.mr-3]="!isCollapsed">
+                <i class="fas fa-sign-out-alt"></i>
+            </span>
+            <span class="text-sm font-medium whitespace-nowrap" [ngClass]="{'hidden': isCollapsed}">
+                Log Out
+            </span>
+        </a>
+    </nav>
+
+    <div class="absolute bottom-0 left-0 right-0 p-4 border-t" [style.border-color]="'var(--border-color)'">
+        <div class="flex items-center justify-between px-2" [ngClass]="{'hidden': isCollapsed}">
+            <span class="text-sm font-medium" [style.color]="'var(--text-secondary)'">Dark</span>
+            <button (click)="toggleTheme()"
+                class="relative inline-flex h-6 w-11 items-center rounded-full transition-colors duration-200 focus:outline-none border-2"
+                [ngClass]="{'bg-[#696ffb] border-[#696ffb]': isDark, 'bg-white border-gray-400': !isDark}">
+                <span class="absolute h-4 w-4 transform rounded-full transition-transform" [ngClass]="{
+                        'translate-x-6 bg-white shadow-md': !isDark,
+                        'translate-x-1 bg-white shadow-lg ring-2 ring-blue-500': isDark,
+                        'bg-[#696ffb]': !isDark
+                    }">
+                    <i class="fas" [ngClass]="{'fa-sun': !isDark, 'fa-moon': isDark}" [style.color]="'#696ffb'"></i>
+                </span>
+            </button>
+            <span class="text-sm font-medium" [style.color]="'var(--text-secondary)'">Light</span>
+        </div>
+
+        <div class="flex justify-center" [ngClass]="{'hidden': !isCollapsed}">
+            <button (click)="toggleTheme()"
+                class="relative inline-flex h-6 w-11 items-center rounded-full transition-colors duration-200 focus:outline-none border-2"
+                [ngClass]="{'bg-[#696ffb] border-[#696ffb]': isDark, 'bg-white border-gray-400': !isDark}">
+                <span class="absolute h-4 w-4 transform rounded-full transition-transform" [ngClass]="{
+                        'translate-x-6 bg-white shadow-md': !isDark,
+                        'translate-x-1 bg-white shadow-lg ring-2 ring-blue-500': isDark,
+                        'bg-[#696ffb]': !isDark
+                    }">
+                    <i class="fas" [ngClass]="{'fa-sun': !isDark, 'fa-moon': isDark}" [style.color]="'#696ffb'"></i>
+                </span>
+            </button>
+        </div>
+    </div>
+</aside>

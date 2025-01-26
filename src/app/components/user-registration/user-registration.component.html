@@ -1,0 +1,52 @@
+<div class="rounded-lg p-6 border" [ngClass]="{'bg-white': !isDark, 'bg-gray-800': isDark}"
+  [style.background-color]="isDark ? 'var(--card-bg)' : 'white'"
+  [style.border]="isDark ? '1px solid var(--border-color)' : '1px solid #D1D5DB'">
+
+  <h3 class="title" [style.color]="'var(--text-primary)'">Registered Users</h3>
+
+  <div class="chart-container">
+    <div class="chart-wrapper">
+      <!-- Background semi-circle -->
+      <svg class="chart" viewBox="0 0 200 100">
+        <path d="M 20 80 A 80 80 0 0 1 180 80" class="chart-bg" [class.dark]="isDark" />
+        <!-- Progress semi-circle -->
+        <path d="M 20 80 A 80 80 0 0 1 180 80" class="chart-progress" [style.strokeDasharray]="circumference"
+          [style.strokeDashoffset]="dashOffset" />
+      </svg>
+
+      <!-- User icon -->
+      <div class="user-icon">
+        <span class="material-symbols-outlined">
+          group
+        </span>
+      </div>
+
+      <!-- Center text -->
+      <div class="total-users">
+        <div [ngClass]="{'text-black': !isDark, 'text-white': isDark}" class="text-lg font-medium">{{
+          totalUsers.toLocaleString() }}</div>
+        <div [ngClass]="{'text-black': !isDark, 'text-white': isDark}" class="text-lg font-medium">Total users</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom stats -->
+  <div class="stats-container">
+    <div class="stat-item">
+      <span [ngClass]="{'text-black': !isDark, 'text-white': isDark}" class="text-lg font-medium">{{
+        premiumUsers.toLocaleString() }}</span>
+      <div class="stat-label">
+        <div class="stat-bar premium"></div>
+        Premium Users
+      </div>
+    </div>
+    <div class="stat-item right">
+      <span [ngClass]="{'text-black': !isDark, 'text-white': isDark}" class="text-lg font-medium">{{
+        basicUsers.toLocaleString() }}</span>
+      <div class="stat-label">
+        <div class="stat-bar basic"></div>
+        Basic Users
+      </div>
+    </div>
+  </div>
+</div>

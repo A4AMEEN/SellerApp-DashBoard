@@ -1,0 +1,42 @@
+<div class="rounded-lg p-6 max-w-4xl mx-auto h-[340px]" [ngClass]="{'bg-gray-100': !isDark}" 
+  [style.background-color]="isDark ? 'var(--card-bg)' : '#FFFFFF'" 
+  [style.border]="isDark ? '1px solid var(--border-color)' : '1px solid #D1D5DB'"> <!-- 1px light gray border in light mode -->
+
+  <h3 [style.color]="'var(--text-primary)'" class="text-lg font-bold mb-4">List of Integration</h3>
+
+  <div class="overflow-x-auto h-[400px]">
+    <table class="w-full text-sm">
+      <thead>
+        <tr [style.color]="'var(--text-secondary)'" class="text-xs">
+          <th class="text-left pb-2 font-bold w-8 bg-[rgba(0,0,255,0.08)]"></th>
+          <th class="text-left pb-2 font-bold bg-[rgba(0,0,255,0.08)]">Application</th>
+          <th class="text-left pb-2 font-bold bg-[rgba(0,0,255,0.08)]">Type</th>
+          <th class="text-left pb-2 font-bold bg-[rgba(0,0,255,0.08)]">Rate</th>
+          <th class="text-right pb-2 font-bold bg-[rgba(0,0,255,0.08)]">Profit</th>
+        </tr>
+      </thead>            
+      <tbody class="divide-y divide-gray-300">
+        <tr *ngFor="let app of integrations" [style.color]="'var(--text-primary)'">
+          <td class="py-6">
+            <input type="checkbox" class="form-checkbox h-5 w-5 text-[#696ffb] rounded border-gray-300 bg-transparent">
+          </td>
+          <td class="py-6">
+            <div class="flex items-center gap-2">
+              <img [src]="app.logo" [alt]="app.name" class="w-6 h-6 rounded">
+              <span class="font-bold">{{ app.name }}</span>
+            </div>
+          </td>
+          <td class="py-6">{{ app.type }}</td>
+          <td class="py-6">
+            <div class="w-full bg-gray-700 rounded-full h-2">
+              <div class="bg-[#696ffb] h-2 rounded-full" [style.width]="app.rate + '%'"></div>
+            </div>
+          </td>
+          <td class="py-6 text-right">
+            {{ app.profit | currency:'USD':'symbol':'1.2-2' }}
+          </td>
+        </tr>
+    </tbody>
+    </table>
+  </div>
+</div>

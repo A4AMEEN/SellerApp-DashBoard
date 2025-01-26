@@ -1,0 +1,31 @@
+<div class="flex justify-between items-center px-6 py-4 border-b" [ngClass]="{'bg-gray-100': !isDark}"
+  [style.background-color]="isDark ? 'var(--card-bg)' : '#FFFFFF'" [style.border-color]="'rgba(0,0,0,0.16)'"
+  [style.border-bottom-color]="'#00000029'">
+  <h1 class="text-2xl font-semibold" [style.color]="'var(--text-primary)'">Dashboard</h1>
+  <div class="flex items-center space-x-4">
+    <div class="relative">
+      <button (click)="toggleDropdown()" class="flex items-center rounded-lg px-4 py-2 border border-gray-300"
+        [style.background-color]="'var(--card-bg)'" [style.color]="'var(--text-primary)'">
+        <img [src]="selectedCountry.flag" [alt]="selectedCountry.name" class="w-5 h-5 mr-2" />
+        <span class="text-sm mr-2">{{selectedCountry.name}}</span>
+        <span class="material-symbols-outlined text-sm">
+          expand_more
+        </span>
+      </button>
+      <div *ngIf="isOpen" class="absolute top-full mt-2 w-full rounded-lg shadow-lg py-2 z-50 border border-gray-300"
+        [style.background-color]="'var(--card-bg)'">
+        <div *ngFor="let country of countries" (click)="selectCountry(country)"
+          class="flex items-center px-4 py-2 cursor-pointer hover:bg-gray-100" [style.color]="'var(--text-primary)'">
+          <img [src]="country.flag" [alt]="country.name" class="w-5 h-5 mr-2" />
+          <span class="text-sm">{{country.name}}</span>
+        </div>
+      </div>
+    </div>
+    <div class="flex items-center h-10">
+      <button class="w-10 h-10 rounded-full flex items-center justify-center border border-gray-300"
+        [ngClass]="{'bg-gray-100': !isDark}" [style.background-color]="isDark ? '#1F214A' : ''">
+        <img src="assets/icons8-happy-48.png" alt="icon" class="w-6 h-6">
+      </button>
+    </div>
+  </div>
+</div>

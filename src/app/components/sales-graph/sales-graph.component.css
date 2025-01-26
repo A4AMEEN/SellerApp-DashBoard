@@ -1,0 +1,28 @@
+:host {
+    display: block;
+    width: 100%;
+  }
+  
+  canvas {
+    width: 100% !important;
+  }
+  
+  /* Custom tooltip styles */
+  ::ng-deep .chartjs-tooltip {
+    background-color: #1B1B3F !important;
+    border-radius: 4px;
+    padding: 12px;
+  }
+  
+  ::ng-deep .chartjs-tooltip-key {
+    display: none;
+  }
+
+  :root {
+    --bg-color: #FFFFFF; /* White background for light mode */
+    --card-bg: #2D3350;   /* Dark mode background */
+    --border-color: #B0B0B0; /* Light gray border for dark mode */
+    --text-primary: #333333;  /* Text primary color */
+    --text-secondary: #555555; /* Text secondary color */
+  }
+  

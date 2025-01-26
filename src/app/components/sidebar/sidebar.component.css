@@ -1,0 +1,63 @@
+/* :host {
+    display: block;
+  }
+  
+  
+  .icon-container svg {
+    width: 20px;+
+    height: 20px;
+  }
+  
+   */
+   .icon-container {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+  }
+  
+  .toggle-button {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    color: #333;
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+  }
+  
+  .toggle-button:hover,
+  .toggle-button:focus {
+    background-color: #f0f0f0;
+    border-color: #999;
+    color: #111;
+    /* Add active styling on hover */
+    transform: scale(1.05);  /* Slightly enlarge the button to make it feel more active */
+  }
+  
+  .toggle-button:active {
+    background-color: #f0f0f0; /* Same as hover state */
+    border-color: #999;        /* Same as hover state */
+    color: #111;               /* Same as hover state */
+  }
+  
+  /* Dark Theme Styles */
+  .dark .toggle-button {
+    background-color: #1A1F37;
+    border-color: #222B45;
+    color: #A3AED0;
+  }
+  
+  .dark .toggle-button:hover,
+  .dark .toggle-button:focus {
+    background-color: #222B45;
+    border-color: #333;
+    color: #fff;
+    /* Add active styling on hover */
+    transform: scale(1.05);  /* Slightly enlarge the button to make it feel more active */
+  }
+  
+  .dark .toggle-button:active {
+    background-color: #222B45; /* Same as hover state */
+    border-color: #333;        /* Same as hover state */
+    color: #fff;               /* Same as hover state */
+  }
+  

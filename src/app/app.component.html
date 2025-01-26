@@ -1,0 +1,67 @@
+<div class="flex h-screen" [ngClass]="{'dark': isDark}">
+  <!-- Sidebar -->
+  <app-sidebar [class]="sidebarClasses" (sidebarToggled)="updateSidebarState($event)">
+  </app-sidebar>
+
+  <!-- Main content -->
+  <div class="flex-1 flex flex-col overflow-hidden" [style.background-color]="'var(--bg-color)'">
+
+    <!-- Top bar -->
+    <app-topbar></app-topbar>
+
+    <!-- Dashboard content -->
+    <div class="flex-1 overflow-y-auto p-6" style="background-color: rgba(255, 255, 255, 0.16);">
+      <!-- Stat cards -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
+        <ng-container *ngIf="!isLoading; else statsLoading">
+          <app-stat-cards *ngFor="let stat of stats" [title]="stat.title" [value]="stat.value"
+            [percentage]="stat.percentage">
+          </app-stat-cards>
+        </ng-container>
+        <ng-template #statsLoading>
+          <app-stats-load *ngFor="let _ of [1, 2, 3, 4]"></app-stats-load>
+        </ng-template>
+      </div>
+
+      <!-- Charts -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 mb-4">
+        <div class="lg:col-span-2">
+          <ng-container *ngIf="!isLoading; else salesGraphLoading">
+            <app-sales-graph></app-sales-graph>
+          </ng-container>
+          <ng-template #salesGraphLoading>
+            <app-sales-graph-skeleton [isDark]="isDark"></app-sales-graph-skeleton>
+          </ng-template>
+        </div>
+        <div>
+          <ng-container *ngIf="!isLoading; else salesRegionLoading">
+            <app-sales-region></app-sales-region>
+          </ng-container>
+          <ng-template #salesRegionLoading>
+            <app-sales-region-skeleton [isDark]="isDark"></app-sales-region-skeleton>
+          </ng-template>
+        </div>
+      </div>
+
+      <!-- User Registration and Integrations -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div>
+          <ng-container *ngIf="!isLoading; else userRegistrationLoading">
+            <app-user-registration></app-user-registration>
+          </ng-container>
+          <ng-template #userRegistrationLoading>
+            <app-user-registration-skeleton [isDark]="isDark"></app-user-registration-skeleton>
+          </ng-template>
+        </div>
+        <div class="lg:col-span-2">
+          <ng-container *ngIf="!isLoading; else integrationListLoading">
+            <app-integration-list></app-integration-list>
+          </ng-container>
+          <ng-template #integrationListLoading>
+            <app-integration-list-skeleton [isDark]="isDark"></app-integration-list-skeleton>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
