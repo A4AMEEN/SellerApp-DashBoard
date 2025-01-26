@@ -45,3 +45,5 @@ implemented custom charts from ngrx
 implemented custom skeleton loading for each components
 implemented theme toggles
 
+Hosted in Vercel: 
+link - https://seller-app-dashboard-sepia.vercel.app/
